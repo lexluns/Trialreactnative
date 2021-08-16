@@ -6,12 +6,13 @@ const COLOR_INCREMENT = 15;
 const reducer = (state, action) => {
     switch (action.colorToChange){
         case 'red':
-          return {...state, red: state.red + action.amount};  
+        return state.red + action.amount > 255 || state.red + action.amount < 0 ? state :{...state, red: state.red + action.amount}; // ternary expression not return on condition must start at start line 
         case 'green':
             return {...state, green: state.green + action.amount};
         case 'blue':
             return {...state, blue: state.blue+ action.amount};
-        case 'default':    
+        case 'default':
+            return state;    
 
 
     }
